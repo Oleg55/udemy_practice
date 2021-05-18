@@ -1,6 +1,6 @@
 "use strict";
 
-const numberOfFilms = +prompt('Сколько фильмов вы посмотрели?', '100');
+let numberOfFilms;
 
 const personalMovieDB = {
 	count: numberOfFilms,
@@ -10,52 +10,69 @@ const personalMovieDB = {
 	privat: false
 };
 
-let lustOfFilmsFirst, ratingOfFilmsFirst, lustOfFilmsSecond, ratingOfFilmsSecond;
 
-// for (let i = 0; i < 2; i++) {
+	
+	do{
+		personalMovieDB.count = +prompt('Сколько фильмов вы посмотрели?', '');
 
-// }
-
-do{
-	lustOfFilmsFirst = prompt('Один из последних просмотренных фильмов?', '');
-	if (lustOfFilmsFirst == ''){
-		alert('Введите значение');
+		if (personalMovieDB.count == '' || personalMovieDB.count == null){
+			alert ('Введите число фильмов');
+		}
+		
 	}
-}
-while(lustOfFilmsFirst == '');
+	while(personalMovieDB.count == '');
+	
+		if ( personalMovieDB.count < 10 ){
 
+			alert('Просмотренно довольно мало фильмов');
+		
+		} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+		
+			alert('Вы классический зритель');
+		
+		} else if (personalMovieDB.count >= 30) {
+		
+			alert('Вы киноман');
+		
+		} else {
+		
+			alert('Произошла ошибка');
+		
+		}
 
-do{
-	ratingOfFilmsFirst = +prompt('На сколько оценете его?', '');
-	if (ratingOfFilmsFirst == ''){
-		alert('Введите значение');
+	let lustOfFilmsFirst, ratingOfFilmsFirst;
+
+	for (let i = 0; i < 2; i++) {
+		do{
+			lustOfFilmsFirst = prompt('Один из последних просмотренных фильмов?', '');
+			// console.log(lustOfFilmsFirst.length);
+			if (lustOfFilmsFirst == '' || lustOfFilmsFirst == null){
+				alert('Введите значение');
+			} else if(lustOfFilmsFirst.length > 50) {
+				alert('Слишком длинное название');
+			}
+		}
+		while(lustOfFilmsFirst == '' || lustOfFilmsFirst == null || lustOfFilmsFirst.length > 50);
+	
+		do{
+			ratingOfFilmsFirst = +prompt('На сколько оценете его?', '');
+			if (ratingOfFilmsFirst == ''){
+				alert('Введите значение');
+			}
+		}
+		while(ratingOfFilmsFirst == '' || ratingOfFilmsFirst == null || ratingOfFilmsFirst == null);
+	
+		personalMovieDB.movies[lustOfFilmsFirst] = ratingOfFilmsFirst;
+	
 	}
-}
-while(ratingOfFilmsFirst == '');
-
-
-do{
-	lustOfFilmsSecond = prompt('Один из последних просмотренных фильмов?', '');
-	if (lustOfFilmsSecond == ''){
-		alert('Введите значение');
-	}
-}
-while(lustOfFilmsSecond == '');
-
-
-do{
-	ratingOfFilmsSecond = +prompt('На сколько оценете его?', '');
-	if (ratingOfFilmsSecond == ''){
-		alert('Введите значение');
-	}
-}
-while(ratingOfFilmsSecond == '');
 
 
 
 
-personalMovieDB.movies[lustOfFilmsFirst] = ratingOfFilmsFirst;
-personalMovieDB.movies[lustOfFilmsSecond] = ratingOfFilmsSecond;
+
+
+
+
 
 
 console.log(personalMovieDB);
