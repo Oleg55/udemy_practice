@@ -12,9 +12,9 @@ const personalMovieDB = {
 
 let lustOfFilmsFirst, ratingOfFilmsFirst, lustOfFilmsSecond, ratingOfFilmsSecond;
 
-for (let i = 0; i < 2; i++) {
+// for (let i = 0; i < 2; i++) {
 
-}
+// }
 
 do{
 	lustOfFilmsFirst = prompt('Один из последних просмотренных фильмов?', '');
